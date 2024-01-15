@@ -36,36 +36,36 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/addproduct")
+	@GetMapping("/addprod")
 	public String displayaddform(HttpSession session) {
 		MyUser u=(MyUser) session.getAttribute("user");
 		if(u!=null) 
-		   return "addproduct";
-		return "redirect:/login/"; 
+		   return "addprod";
+		return "redirect:/login/";
 	}
 	
-	@PostMapping("/insertProduct")
-	public ModelAndView insertProduct() {
-		Product p=new Product();
+	@PostMapping("/insertprod")
+	public ModelAndView insertProduct(@RequestParam String title,@RequestParam String desc,@RequestParam int price,@RequestParam int cid,@RequestParam int stock) {
+		Product p=new Product(title,desc,price,cid,stock);
 		pses.addnewProduct(p);
 		return new ModelAndView("redirect:/products");
 		
 	}
 	
-	@GetMapping("/edit/{id}")
-	public ModelAndView editProduct(@PathVariable("id") int pid) {
+	@GetMapping("/editprod/{pid}")
+	public ModelAndView editProduct(@PathVariable("pid") int pid) {
 		Product p=pses.getById(pid);
 		return new ModelAndView("editProduct","p",p);
 		
 	}
 	
-	@PostMapping("/updateProduct")
-	public ModelAndView updateProdut() {
-		pses.updateById(new Product());
+	@PostMapping("/update")
+	public ModelAndView updateProdut(@RequestParam int pid,@RequestParam String title,@RequestParam String desc,@RequestParam int price,@RequestParam int cid,@RequestParam int stock) {
+		pses.updateById(new Product(pid,title,desc,price,cid,stock));
 		return new ModelAndView("redirect:/products");
 	}
 	
-	@GetMapping("delete/{id}")
+	@GetMapping("deleteprod/{id}")
 	public ModelAndView deleteProduct(@PathVariable int id) {
 		pses.deleteById(id);
 		return new ModelAndView("redirect:/products");

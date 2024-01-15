@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,16 +27,16 @@ public class ProductdaoImpl implements Productdao
 	
 	@Override
 	public void save(Product p) {
-		String str="insert into product values(?,?,?,?)";
-		jt.update(str,new Object[] {p.getPid(),
-				p.getPname(),p.getPrice(),p.getQty()});
+		String str="insert into products(title,description,unitprice,categoryid,unitinstock) values(?,?,?,?,?)";
+		jt.update(str,new Object[] {
+				p.getTitle(),p.getDesc(),p.getUnit(),p.getCatid(),p.getUnitstock()});
 		
 	}
 
 	@Override
 	public Product findById(int pid) {
 		try {
-		    return jt.queryForObject("select * from product where pid=?",new Object[] {pid},BeanPropertyRowMapper.newInstance(Product.class));
+		    return jt.queryForObject("select * from products where productid=?",new Object[] {pid},BeanPropertyRowMapper.newInstance(Product.class));
 		}catch(EmptyResultDataAccessException e) {
 			return null;
 		}
@@ -43,15 +44,14 @@ public class ProductdaoImpl implements Productdao
 	}
 
 	@Override
-	public void modifyProduct(Product product) {
-		jt.update("update product set pname=?,qty=?,price=? where pid=?",
-				new Object[] {product.getPname(),product.getQty(),product.getPrice(),product.getPid()});
-		
+	public void modifyProduct(Product p) {
+		jt.update("update products set title=?,description=?,unitprice=?,categoryid=?,unitinstock=? where productid=?",
+				new Object[] {p.getTitle(),p.getDesc(),p.getUnit(),p.getCatid(),p.getUnitstock(),p.getPid()});
 	}
 
 	@Override
 	public void removeById(int id) {
-		jt.update("delete from product where pid=?",new Object[] {id});
+		jt.update("delete from products where productid=?",new Object[] {id});
 		
 	}    
 

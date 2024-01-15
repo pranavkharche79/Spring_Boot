@@ -47,7 +47,7 @@
 </main>
 <br>
 <div style="text-align: center;">
-<h2><a href="addprod.jsp" type="button" class="btn btn-outline-primary" style="font-size: 25px; ">Add New Product</a></h2>
+<h2><a href="addprod" type="button" class="btn btn-outline-primary" style="font-size: 25px; ">Add New Product</a></h2>
 </div>
 </body>
 </html>
