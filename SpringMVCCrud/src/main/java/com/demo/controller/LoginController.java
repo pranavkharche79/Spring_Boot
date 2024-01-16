@@ -25,6 +25,13 @@ public class LoginController {
 		return "login";
 	}
 	
+	@GetMapping("/SpringMVCCrud/")
+	public String Login(HttpSession ses)
+	{
+		ses.invalidate();
+		return "redirect:/login";
+	}
+	
 	@PostMapping("/validate")
 	public ModelAndView validate(@RequestParam String uname,@RequestParam String pass,HttpSession ses)
 	{
