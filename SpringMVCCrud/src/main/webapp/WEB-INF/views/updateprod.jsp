@@ -12,7 +12,7 @@
 <body>
 	<div class="add-product">
         <h2>Add a Product</h2>
-        <form action="update" method="post">
+        <form action="/SpringMVCCrud/update" method="post">
         	
         	<label for="price">Product ID:</label>
             <input type="number" id="pid" name="pid" value="${p.pid}" step="0.01" readonly="readonly">

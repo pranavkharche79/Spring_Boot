@@ -53,9 +53,10 @@ public class ProductController {
 	}
 	
 	@GetMapping("/editprod/{pid}")
-	public ModelAndView editProduct(@PathVariable("pid") int pid) {
+	public ModelAndView editProduct(@PathVariable int pid) {
 		Product p=pses.getById(pid);
-		return new ModelAndView("editProduct","p",p);
+		System.out.println(p);
+		return new ModelAndView("updateprod","p",p);
 		
 	}
 	

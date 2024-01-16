@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import com.demo.model.Product;
@@ -36,7 +37,23 @@ public class ProductdaoImpl implements Productdao
 	@Override
 	public Product findById(int pid) {
 		try {
-		    return jt.queryForObject("select * from products where productid=?",new Object[] {pid},BeanPropertyRowMapper.newInstance(Product.class));
+		  Product p = jt.queryForObject("select * from products where productid=?",new Object[] {pid},
+		    		(rs,num)->{
+		    			Product r=new Product(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+		    			return r;
+		    		});
+		  return p;
+			
+			//OR
+		  
+//			SqlRowSet rowSet = jt.queryForRowSet("select * from products where productid=?", new Object[] {pid});
+//			Product product = null;
+//			while (rowSet.next()) {
+//			    product = new Product(rowSet.getInt("productid"), rowSet.getString("title"), rowSet.getString("description"), rowSet.getInt("unitprice"), rowSet.getInt("categoryid"), rowSet.getInt("unitinstock"));
+//			}
+//			return product;
+			
+			
 		}catch(EmptyResultDataAccessException e) {
 			return null;
 		}
