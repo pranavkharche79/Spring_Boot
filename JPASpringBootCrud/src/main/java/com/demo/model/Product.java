@@ -16,23 +16,23 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pid;
 	private String title;
-	private String des;
+	private String description;
 	private int unit;
 	private int catid;
 	private int unitstock;
-	public Product(int pid, String title, String des, int unit, int catid, int unitstock) {
+	public Product(int pid, String title, String description, int unit, int catid, int unitstock) {
 		super();
 		this.pid = pid;
 		this.title = title;
-		this.des = des;
+		this.description = description;
 		this.unit = unit;
 		this.catid = catid;
 		this.unitstock = unitstock;
 	}
-	public Product(String title, String des, int unit, int catid, int unitstock) {
+	public Product(String title, String description, int unit, int catid, int unitstock) {
 		super();
 		this.title = title;
-		this.des = des;
+		this.description = description;
 		this.unit = unit;
 		this.catid = catid;
 		this.unitstock = unitstock;
@@ -53,11 +53,11 @@ public class Product {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDesc() {
-		return des;
+	public String getdescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.des = desc;
+	public void setdescription(String description) {
+		this.description = description;
 	}
 	public int getUnit() {
 		return unit;
@@ -79,7 +79,7 @@ public class Product {
 	}
 	@Override
 	public String toString() {
-		return "Product [pid=" + pid + ", title=" + title + ", desc=" + des + ", unit=" + unit + ", catid=" + catid
+		return "Product [pid=" + pid + ", title=" + title + ", description=" + description + ", unit=" + unit + ", catid=" + catid
 				+ ", unitstock=" + unitstock + "]";
 	}
 	

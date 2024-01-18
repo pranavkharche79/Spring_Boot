@@ -21,7 +21,7 @@
             <input type="text" id="title" name="title" value="${p.title}" required>
             
             <label for="desc">Product Description:</label>
-            <input id="desc" name="desc" value="${p.desc}" required />
+            <input id="desc" name="desc" value="${p.description}" required />
             
             <label for="price">Product UnitPrice:</label>
             <input type="number" id="price" name="price" value="${p.unit}" step="0.01" required>

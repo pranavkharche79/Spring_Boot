@@ -56,7 +56,7 @@
       	<tr>
       	<td data-title='Provider Name'>${p.pid}</td>
 		<td data-title='Provider Name'>${p.title}</td>
-		<td data-title='Provider Name'>${p.des}</td>
+		<td data-title='Provider Name'>${p.description}</td>
 		<td data-title='Provider Name'>${p.unit}</td>
 		<td data-title='Provider Name'>${p.catid}</td>
 		<td data-title='Provider Name'>${p.unitstock}</td>
@@ -73,7 +73,7 @@
 <br>
 <div style="text-align: center;">
 <h2><a href="addprod" type="button" class="btn btn-outline-primary" style="font-size: 25px; ">Add New Product</a></h2>
-<h2><a href="SpringMVCCrud/" type="button" class="butt button3" style="font-size: 25px; ">Logout</a></h2>
+<h2><a href="logout" type="button" class="butt button3" style="font-size: 25px; ">Logout</a></h2>
 </div>
 </body>
 </html>

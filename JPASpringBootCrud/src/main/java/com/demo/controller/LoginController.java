@@ -25,11 +25,11 @@ public class LoginController {
 		return "login";
 	}
 	
-	@GetMapping("/SpringMVCCrud/")
+	@GetMapping("/logout")
 	public String Login(HttpSession ses)
 	{
 		ses.invalidate();
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	@PostMapping("/validate")

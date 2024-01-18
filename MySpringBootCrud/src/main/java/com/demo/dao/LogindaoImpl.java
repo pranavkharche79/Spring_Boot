@@ -14,6 +14,7 @@ public class LogindaoImpl implements Logindao
 	@Autowired
 	JdbcTemplate jt;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public MyUser validate(String uname, String pass) {
 		System.out.println(uname+"  "+pass);

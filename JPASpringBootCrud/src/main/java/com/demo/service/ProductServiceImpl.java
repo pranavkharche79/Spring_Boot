@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService
 		if(op.isPresent()) {
 			Product p=op.get();
 			p.setTitle(pro.getTitle());
-			p.setDesc(null);
+			p.setdescription(pro.getdescription());
 			p.setUnit(pro.getUnit());
 			p.setCatid(pro.getCatid());
 			p.setUnitstock(pro.getUnitstock());
